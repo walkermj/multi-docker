@@ -21,4 +21,17 @@ after_success:
   - docker push walkermj/multi-server
   - docker push walkermj/multi-worker
 
+deploy:
+  edge: true
+  provider: elasticbeanstalk
+  region: us-east-2
+  app: multi-docker
+  environment: MultiDocker-env
+  bucket_name: elasticbeanstalk-us-east-2-951344299841
+  bucket_path: docker-multi
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+
 
